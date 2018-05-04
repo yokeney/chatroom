@@ -6,6 +6,10 @@ mongoose.connect(DB_URL);
 mongoose.connection.on('connected',()=>{
 	console.log('mongo connect success');
 })
+const User=mongoose.model('use',new mongoose.Schema({
+	user:{type:String,require:true},
+	age:{type:Number,require:true}
+}))
 //新建app
 const app=express()
 app.get('/',(req,res)=>{
