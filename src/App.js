@@ -1,14 +1,16 @@
 import React from 'react'
-import {Button} from 'antd-mobile'
-import 'antd-mobile/dist/antd-mobile.css'
- export default class App extends React.Component{
-    render(){
-        const a='hx'
-        return(
-            <div>
-                <h1>{a}</h1>
-                <Button type="primary">111</Button>
-            </div>
-        )
-    }
+import {addGum} from './index_redux'
+import {removeGum} from './index_redux'
+export default class App extends React.Component{
+	render(){
+		const store=this.props.store;
+		const num=store.getState();
+		return (
+		<div>
+			<h1>现在有{num}件事</h1>
+			<button onClick={()=>store.dispatch(addGum())}>+</button>
+			<button onClick={()=>store.dispatch(removeGum())}>-</button>
+		</div>
+		)
+	}
 }
