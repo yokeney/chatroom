@@ -14,10 +14,10 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import App from './App'
 import {createStore} from 'redux'
-import {counter} from './index_redux'
+import {counter,addGum,removeGum} from './index_redux'
 const store=createStore(counter);
 function render(){
-	ReactDom.render(<App store={store}/>,document.getElementById('root'))
+	ReactDom.render(<App store={store} addGum={addGum} removeGum={removeGum}/>,document.getElementById('root'))
 }
 render()
 store.subscribe(render)

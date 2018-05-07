@@ -1,9 +1,9 @@
 import React from 'react'
-import {addGum} from './index_redux'
-import {removeGum} from './index_redux'
 export default class App extends React.Component{
 	render(){
 		const store=this.props.store;
+		const addGum=this.props.addGum;
+		const removeGum=this.props.removeGum;
 		const num=store.getState();
 		return (
 		<div>
