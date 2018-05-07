@@ -16,6 +16,7 @@ import App from './App'
 import {createStore,applyMiddleware,compose} from 'redux'
 import {counter} from './index_redux'
 import thunk from 'redux-thunk'
+import {BrowserRouter,Route,Link} from 'react-router-dom'
 import {Provider} from 'react-redux'
 const store=createStore(counter,compose(
 	applyMiddleware(thunk),
@@ -23,7 +24,26 @@ const store=createStore(counter,compose(
 
 ));
 function render(){
-	ReactDom.render(<Provider store={store}><App /></Provider>,document.getElementById('root'))
+	function Lesson(){
+		return <h2>Lesson</h2>
+	}
+	function Profile(){
+		return <h2>Profile</h2>
+	}
+	ReactDom.render(<Provider store={store}>
+		<BrowserRouter>
+			<div>
+				<ul>
+					<li><Link to="/">1</Link></li>
+					<li><Link to="/Lesson">2</Link></li>
+					<li><Link to="/Profile">3</Link></li>
+				</ul>
+				<Route path="/" exact component={App}></Route>
+				<Route path="/Lesson" component={Lesson}></Route>
+				<Route path="/Profile" component={Profile}></Route>
+			</div>
+		</BrowserRouter>
+		</Provider>,document.getElementById('root'))
 }
 render()
 store.subscribe(render)

@@ -1,7 +1,6 @@
 import {addGum,removeGum,addAsync} from './index_redux'
 import React from 'react'
 import {connect} from 'react-redux'
-// App=connect(mspStatetoProps,actionCreators)(App);
 @connect(state=>({num:state.count}),{addGum,removeGum,addAsync})
  class App extends React.Component{
 	render(){
@@ -15,5 +14,4 @@ import {connect} from 'react-redux'
 		)
 	}
 }
-
 export default App;
