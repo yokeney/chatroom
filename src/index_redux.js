@@ -1,11 +1,12 @@
 const ADD="add"
 const DEL="del"
-export function counter(state=0,action){
+export function counter(state={count:0},action){
+	const count = state.count;
 	switch (action.type) {
 		case ADD:
-			return state+1
+			return {count:count+1}
 		case DEL:
-			return state-1
+			return {count:count-1}
 		default:
 		return state
 	}

@@ -1,18 +1,22 @@
+import {addGum,removeGum,addAsync} from './index_redux'
 import React from 'react'
-export default class App extends React.Component{
+import {connect} from 'react-redux'
+ class App extends React.Component{
 	render(){
-		const store=this.props.store;
-		const addGum=this.props.addGum;
-		const removeGum=this.props.removeGum;
-		const addAsync=this.props.addAsync;
-		const num=store.getState();
 		return (
 		<div>
-			<h1>现在有{num}件事</h1>
-			<button onClick={()=>store.dispatch(addGum())}>+</button>
-			<button onClick={()=>store.dispatch(removeGum())}>-</button>
-			<button onClick={()=>store.dispatch(addAsync())}>###</button>
+			<h1>现在有{this.props.num}件事</h1>
+			<button onClick={this.props.addGum}>+</button>
+			<button onClick={this.props.removeGum}>-</button>
+			<button onClick={this.props.addAsync}>###</button>
 		</div>
 		)
 	}
 }
+const mspStatetoProps=(state)=>{
+	// console.log(state);
+	return {num:state.count}
+}
+const actionCreators={addGum,removeGum,addAsync};
+App=connect(mspStatetoProps,actionCreators)(App);
+export default App;

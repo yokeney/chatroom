@@ -14,15 +14,16 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import App from './App'
 import {createStore,applyMiddleware,compose} from 'redux'
-import {counter,addGum,removeGum,addAsync} from './index_redux'
+import {counter} from './index_redux'
 import thunk from 'redux-thunk'
+import {Provider} from 'react-redux'
 const store=createStore(counter,compose(
 	applyMiddleware(thunk),
 	window.devToolExtension?window.devToolExtension():f=>f
 
 ));
 function render(){
-	ReactDom.render(<App store={store} addGum={addGum} removeGum={removeGum} addAsync={addAsync}/>,document.getElementById('root'))
+	ReactDom.render(<Provider store={store}><App /></Provider>,document.getElementById('root'))
 }
 render()
 store.subscribe(render)
