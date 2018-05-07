@@ -16,3 +16,10 @@ export function addGum(){
 export function removeGum(){
 	return {type:DEL}
 }
+export function addAsync(){
+	return dispatch=>{
+		setTimeout(()=>{
+			dispatch(addGum())
+		},2000)
+	}
+}
