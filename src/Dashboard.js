@@ -11,18 +11,20 @@ import {loginout} from './Auth_redux'
  export default class Dashboard extends Component{
  	render(){
 		console.log(this.props);
+		const match=this.props.match;
+		console.log(match);
 		const redirectToLogin=<Redirect to='/login'></Redirect>
  		return this.props.isAuth?
 		<div>
 		{this.props.isAuth?<button onClick={this.props.loginout}>注销</button>:null}
 			<ul>
-				<li><Link to="/Dashboard">1</Link></li>
-				<li><Link to="/Dashboard/Lesson">2</Link></li>
-				<li><Link to="/Dashboard/Profile">3</Link></li>
+				<li><Link to={`${match.url}/`}>1</Link></li>
+				<li><Link to={`${match.url}/Lesson`}>2</Link></li>
+				<li><Link to={`${match.url}/Profile`}>3</Link></li>
 			</ul>
-			<Route path="/Dashboard" exact component={App}></Route>
-			<Route path="/Dashboard/Lesson" component={Lesson}></Route>
-			<Route path="/Dashboard/Profile" component={Profile}></Route>
+			<Route path={`${match.url}/`} exact component={App}></Route>
+			<Route path={`${match.url}/Lesson`} component={Lesson}></Route>
+			<Route path={`${match.url}/Profile`} component={Profile}></Route>
 		</div>:redirectToLogin
  	}
  }
