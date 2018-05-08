@@ -1,6 +1,6 @@
 const LOGININ="loginin";
 const LOGINOUT="loginout";
-export function auth(state={isAuth=false},action){
+export function auth(state={isAuth:false},action){
 	switch (action.type) {
 		case LOGININ:
 			return {...state,isAuth:true};

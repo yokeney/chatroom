@@ -1,7 +1,7 @@
 import {addGum,removeGum,addAsync} from './index_redux'
 import React from 'react'
 import {connect} from 'react-redux'
-@connect(state=>({num:state.count}),{addGum,removeGum,addAsync})
+@connect(state=>({num:state.counter.count}),{addGum,removeGum,addAsync})
  class App extends React.Component{
 	render(){
 		return (
