@@ -12,32 +12,32 @@ const User=mongoose.model('user',new mongoose.Schema({
 	age:{type:Number,require:true}
 }))
 //新增数据
-User.create({
-	user:'名',
-	age:"12"
-},(err,doc)=>{
-	if (!err) {
-		console.log(doc);
-	}
-	else{
-		console.log(err);
-	}
-})
+// User.create({
+// 	user:'名',
+// 	age:"12"
+// },(err,doc)=>{
+// 	if (!err) {
+// 		console.log(doc);
+// 	}
+// 	else{
+// 		console.log(err);
+// 	}
+// })
 //删除
-// User.remove({age:10},(err,doc)=>{
+// User.remove({age:12},(err,doc)=>{
 // 	console.log(doc);
 // })
 //更新
-User.update({'user':'名'},{'$set':{age:26}},(err,doc)=>{
-	console.log(doc);
-})
+// User.update({'user':'名'},{'$set':{age:26}},(err,doc)=>{
+// 	console.log(doc);
+// })
 //新建app
 const app=express()
 app.get('/',(req,res)=>{
 	res.send('<h1>hello,world</h1>')
 })
 app.get('/data',(req,res)=>{
-	User.find({},(err,doc)=>{
+	User.findOne({},(err,doc)=>{
 		res.json(doc)
 	})
 })
