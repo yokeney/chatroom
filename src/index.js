@@ -7,6 +7,7 @@ import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import Auth from './Auth'
 import Dashboard from './Dashboard'
+import './config'
 const store=createStore(combineReducers,compose(
 	applyMiddleware(thunk),
 	window.devToolExtension?window.devToolExtension():f=>f
