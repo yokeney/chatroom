@@ -1,7 +1,6 @@
 import axios from 'axios'
-const LOGININ="loginin";
-const LOGINOUT="loginout";
-const USER_DATA='USER_DATA'
+
+import {LOGININ,LOGINOUT,USER_DATA} from './Typeaction'
 const initState={
 	isAuth:false,
 	user:'hx',
@@ -18,7 +17,6 @@ export function auth(state=initState,action){
 		return {...state,user:action.payload.user,age:action.payload.age}
 		default:
 			return state
-
 	}
 }
 export function getUserData(){

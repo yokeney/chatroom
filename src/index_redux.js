@@ -1,5 +1,5 @@
-const ADD="add"
-const DEL="del"
+
+import {ADD,DEL} from './Typeaction'
 export function counter(state={count:0},action){
 	const count = state.count;
 	switch (action.type) {
