@@ -12,14 +12,17 @@ import Register from './container/register/register'
 const store=createStore(combineReducers,compose(
 	applyMiddleware(thunk),
 	window.devToolExtension?window.devToolExtension():f=>f
-
 ));
 console.log(store.getState());
+function boss(){
+	return <h1>boss</h1>
+}
 	ReactDom.render(
 		<Provider store={store}>
 			<BrowserRouter>
 				<div>
 					<AuthRoute></AuthRoute>
+					<Route path="/boss" component={boss}></Route>
 					<Route path="/login" component={Login}></Route>
 					<Route path="/register" component={Register}></Route>
 				</div>
