@@ -7,8 +7,8 @@ Router.get('/list',(req,res)=>{
 		return res.json(doc)
 	})
 })
-Router.post('./register',(req,res)=>{
-	console.log(req.body.data);
+Router.post('/register',(req,res)=>{
+	console.log(req.body.data); 
 	const {user,pwd,type}=req.body.data;
 	User.findOne({user:user},(err,doc)=>{
 		if (doc) {
