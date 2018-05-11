@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import Logo from '../../component/logo/logo'
-import {List,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
+import {InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
  export default class Login extends Component{
 	 constructor(){
 		 super();
