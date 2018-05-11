@@ -1,6 +1,7 @@
 const express=require('express');
 const Router=express.Router();
 const model=require('./model')
+const utils=require('utility')
 const User=model.getModel('user')
 Router.get('/list',(req,res)=>{
 	User.find({},(err,doc)=>{
@@ -8,13 +9,13 @@ Router.get('/list',(req,res)=>{
 	})
 })
 Router.post('/register',(req,res)=>{
-	console.log(req.body.data); 
-	const {user,pwd,type}=req.body.data;
+	console.log(req.body);
+	const {user,pwd,type}=req.body;
 	User.findOne({user:user},(err,doc)=>{
 		if (doc) {
 			return res.json({code:1,msg:'用户名重复'})
 		}
-		User.create({user,type},(e,d)=>{
+		User.create({user,type,pwd:md5Pwd(pwd)},(e,d)=>{
 			if (e) {
 				return res.json({code:1,msg:'后端error'})
 			}
@@ -25,4 +26,8 @@ Router.post('/register',(req,res)=>{
 Router.get('/info',(req,res)=>{
 	return res.json({code:1})
 })
+function md5Pwd(pwd){
+	const salt='hx@!';
+	return utils.md5(utils.md5(pwd+salt))
+}
 module.exports=Router;
