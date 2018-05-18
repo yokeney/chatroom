@@ -1,6 +1,5 @@
 const express=require('express')
 const bodyParser=require('body-parser')
-const utils=require('utility')
 const cookieParser=require('cookie-parser')
 const userRouter=require('./user')
 //新建app

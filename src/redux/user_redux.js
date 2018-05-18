@@ -1,6 +1,7 @@
 import {getRedirectPath} from '../util'
 import axios from 'axios'//axios不用加
 const REGISTER_SUCCESS="REGISTER_SUCCESS";
+const LOGIN_SUCCESS='LOGIN_SUCCESS';
 const ERROR="ERROR";
 const initstate={
 	msg:'',
@@ -22,6 +23,25 @@ export function user(state=initstate,action){
 }
 function errorMsg(msg){
 	return {msg,type:ERROR}
+}
+function loginSuccess(){
+	return  {type: LOGIN_SUCCESS}
+}
+export function login({user,pwd}){
+	if (!user||!pwd) {
+		return errorMsg('用户密码必须输入')
+	}
+	return dispatch=>{
+		axios.post('/user/login',{user,pwd}).then(res=>{
+			if (res.status===200&&res.data.code===0) {
+				// dispatch(registerSuccess({user,pwd,type}));
+				dispatch(loginSuccess(res.data.data))
+			}
+			else{
+				dispatch(errorMsg(res.data.msg))
+			}
+		})
+}
 }
 function registerSuccess(data){
 	return {type:REGISTER_SUCCESS,payload:data}
