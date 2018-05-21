@@ -14,6 +14,8 @@ export function user(state=initstate,action){
 	switch (action.type) {
 		case REGISTER_SUCCESS:
 			return {...state,redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
+		case LOGIN_SUCCESS:
+			return {...state,redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
 		case ERROR:
 			return {...state,isAuth:false,msg:action.msg}
 		default:
@@ -24,8 +26,8 @@ export function user(state=initstate,action){
 function errorMsg(msg){
 	return {msg,type:ERROR}
 }
-function loginSuccess(){
-	return  {type: LOGIN_SUCCESS}
+function loginSuccess(data){
+	return  {type: LOGIN_SUCCESS,payload:data}
 }
 export function login({user,pwd}){
 	if (!user||!pwd) {
