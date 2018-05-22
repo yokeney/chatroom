@@ -3,11 +3,12 @@ import ReactDom from 'react-dom'
 import {createStore,applyMiddleware,compose} from 'redux'
 import combineReducers from './reducers'
 import thunk from 'redux-thunk'
-import {BrowserRouter,Route} from 'react-router-dom'
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import './config'
 import AuthRoute from './component/AuthRouter/AuthRouter'
 import Login from './container/login/login'
+import 	Bossinfo from './container/bossinfo/bossinfo'
 import Register from './container/register/register'
 const store=createStore(combineReducers,compose(
 	applyMiddleware(thunk),
@@ -22,9 +23,12 @@ function boss(){
 			<BrowserRouter>
 				<div>
 					<AuthRoute></AuthRoute>
-					<Route path="/boss" component={boss}></Route>
-					<Route path="/login" component={Login}></Route>
-					<Route path="/register" component={Register}></Route>
+					<Switch>
+						<Route path='/bossinfo' component={Bossinfo}></Route>
+						<Route path="/boss" component={boss}></Route>
+						<Route path="/login" component={Login}></Route>
+						<Route path="/register" component={Register}></Route>
+					</Switch>
 				</div>
 			</BrowserRouter>
 		</Provider>,document.getElementById('root'))
