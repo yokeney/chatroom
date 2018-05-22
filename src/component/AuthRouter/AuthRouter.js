@@ -1,7 +1,13 @@
 import{Component} from "react";
 import axios from 'axios'
+import {loadData} from '../../redux/user_redux'
+import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 @withRouter
+@connect(
+    null,
+    {loadData}
+)
  export default class AuthRoute extends Component{
 	 componentDidMount(){
 		 const publicList=['/login','/register']
@@ -15,6 +21,7 @@ import {withRouter} from 'react-router-dom'
 			 if (res.status===200) {
                  if (res.data.code===0) {
                      //有登录信息的
+                     this.props.loadData(res.data.data);
                  }
                  else{
                      this.props.history.push('/login')

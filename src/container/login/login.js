@@ -37,6 +37,7 @@ import {InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
 				<Logo></Logo>
                     {this.props.redirectTo?<Redirect to={this.props.redirectTo} />:null}
 				<WingBlank>
+                
                     {this.props.msg?<p className="error-msg">{this.props.msg}</p>:null}
 					<InputItem onChange={v=>this.handChange('user',v)}>用户</InputItem>
 					<WhiteSpace/>
