@@ -1,6 +1,7 @@
 import {getRedirectPath} from '../util'
 import axios from 'axios'//axios不用加
 const REGISTER_SUCCESS="REGISTER_SUCCESS";
+const AUTH_SUCCESS="AUTH_SUCCESS"
 const LOGIN_SUCCESS='LOGIN_SUCCESS';
 const LOGIN_DATA="LOGIN_DATA";
 const ERROR="ERROR";
@@ -12,12 +13,10 @@ const initstate={
 }
 export function user(state=initstate,action){
 	switch (action.type) {
-		case REGISTER_SUCCESS:
+		case AUTH_SUCCESS:
 			return {...state,redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
 		case LOGIN_DATA:
 			return {...state,msg:action.payload}
-		case LOGIN_SUCCESS:
-			return {...state,redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
 		case ERROR:
 			return {...state,isAuth:false,msg:action.msg}
 		default:
@@ -25,11 +24,27 @@ export function user(state=initstate,action){
 	}
 	return state;
 }
+function Authsuccess(data){
+	return{type:AUTH_SUCCESS,payload:data}
+}
 function errorMsg(msg){
 	return {msg,type:ERROR}
 }
 function loginSuccess(data){
 	return  {type: LOGIN_SUCCESS,payload:data}
+}
+export function update(data){
+	return dispatch=>{
+		axios.post('/user/update',data).then(res=>{
+			if (res.status==200&&res.data.code==0) {
+				dispatch(Authsuccess(data))
+			}
+			else{
+				dispatch(errorMsg(data))
+			}
+		})
+
+	}
 }
 export function loadData(userinfo){
 	return{type:LOGIN_DATA,payload:userinfo}
