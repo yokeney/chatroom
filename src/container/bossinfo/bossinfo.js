@@ -5,7 +5,7 @@ import{update} from '../../redux/user_redux'
 import {Redirect} from 'react-router-dom'
 import AvatarSelector from '../../component/avatar-selector/avatar-selector'
 @connect(
-    state=>state.suer,
+    state=>state.user,
     {update}
 )
  export default class Bossinfo extends Component{
@@ -25,6 +25,7 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
  	render(){
         const path=this.props.location.pathname;
         const redirect=this.props.redirectTo;
+        console.log(path,redirect);
  		return (
  				<div>
                      {redirect&&redirect!==path?<Redirect to={this.props.redirectTo} />:null}
