@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import{NavBar,InputItem,TextareaItem,Button} from 'antd-mobile'
 import {connect} from 'react-redux'
 import{update} from '../../redux/user_redux'
+import {Redirect} from 'react-router-dom'
 import AvatarSelector from '../../component/avatar-selector/avatar-selector'
 @connect(
     state=>state.suer,
@@ -11,7 +12,9 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
      constructor(){
          super();
          this.state={
-             title:''
+             title:'',
+             company:'',
+             money:''
          }
      }
      onChange(key,val){
@@ -20,8 +23,11 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
          })
      }
  	render(){
+        const path=this.props.location.pathname;
+        const redirect=this.props.redirectTo;
  		return (
  				<div>
+                     {redirect&&redirect!==path?<Redirect to={this.props.redirectTo} />:null}
                     <NavBar mode="dark">Boss页面</NavBar>
                     <AvatarSelector selectAvatar={(imgname)=>{
                         this.setState({
