@@ -9,6 +9,7 @@ import './config'
 import AuthRoute from './component/AuthRouter/AuthRouter'
 import Login from './container/login/login'
 import 	Bossinfo from './container/bossinfo/bossinfo'
+import 	Geniusinfo from './container/Geniusinfo/geniusinfo'
 import Register from './container/register/register'
 const store=createStore(combineReducers,compose(
 	applyMiddleware(thunk),
@@ -25,6 +26,7 @@ function boss(){
 					<AuthRoute></AuthRoute>
 					<Switch>
 						<Route path='/bossinfo' component={Bossinfo}></Route>
+						<Route path='/geniusinfo' component={Geniusinfo}></Route>
 						<Route path="/boss" component={boss}></Route>
 						<Route path="/login" component={Login}></Route>
 						<Route path="/register" component={Register}></Route>

@@ -14,7 +14,7 @@ const initstate={
 export function user(state=initstate,action){
 	switch (action.type) {
 		case AUTH_SUCCESS:
-			return {...state,redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
+			return {...state,redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload,pwd:''}
 		case LOGIN_DATA:
 			return {...state,msg:action.payload}
 		case ERROR:
@@ -24,7 +24,8 @@ export function user(state=initstate,action){
 	}
 	return state;
 }
-function Authsuccess(data){
+function Authsuccess(obj){
+	const {pwd,...data} = obj;
 	return{type:AUTH_SUCCESS,payload:data}
 }
 function errorMsg(msg){
