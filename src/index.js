@@ -7,6 +7,7 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import './config'
 import AuthRoute from './component/AuthRouter/AuthRouter'
+import Dashboard from './component/Dashboard/Dashboard'
 import Login from './container/login/login'
 import 	Bossinfo from './container/bossinfo/bossinfo'
 import 	Geniusinfo from './container/Geniusinfo/geniusinfo'
@@ -19,6 +20,8 @@ console.log(store.getState());
 function boss(){
 	return <h1>boss</h1>
 }
+
+//boss genius me msg
 	ReactDom.render(
 		<Provider store={store}>
 			<BrowserRouter>
@@ -30,6 +33,8 @@ function boss(){
 						<Route path="/boss" component={boss}></Route>
 						<Route path="/login" component={Login}></Route>
 						<Route path="/register" component={Register}></Route>
+						<Route  component={Dashboard}></Route>
+
 					</Switch>
 				</div>
 			</BrowserRouter>
