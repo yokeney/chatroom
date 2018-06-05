@@ -20,7 +20,6 @@ console.log(store.getState());
 function boss(){
 	return <h1>boss</h1>
 }
-
 //boss genius me msg
 	ReactDom.render(
 		<Provider store={store}>
