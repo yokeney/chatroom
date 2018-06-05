@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import {connect} from 'react-redux'
+import {Switch,Route} from 'react-router-dom'
 import {NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlink/navlink'
 function Boss(){
@@ -22,7 +23,7 @@ function User(){
          super();
      }
    render(){
-       console.log(222);
+
        const user=this.props.user;
        const {pathname}=this.props.location;
        console.log(this.props);
@@ -60,8 +61,16 @@ function User(){
        ]
      return (
        <div>
-           <NavBar mode="dard">{navList.find(v=>v.path=pathname).title}</NavBar>
-           <h2>content</h2>
+           <NavBar mode="dard" className="fixd-header">{navList.find(v=>v.path=pathname).title}</NavBar>
+           <div style={{marginTop:45}}>
+                <Switch>
+                    {
+                        navList.map(v=>(
+                            <Route key={v.path} path={v.path} component={v.component}></Route>
+                        ))
+                    }
+                </Switch>
+           </div>
            <NavLinkBar data={navList}></NavLinkBar>
        </div>
      )

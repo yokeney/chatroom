@@ -12,6 +12,7 @@ import Login from './container/login/login'
 import 	Bossinfo from './container/bossinfo/bossinfo'
 import 	Geniusinfo from './container/Geniusinfo/geniusinfo'
 import Register from './container/register/register'
+import './index.css'
 const store=createStore(combineReducers,compose(
 	applyMiddleware(thunk),
 	window.devToolExtension?window.devToolExtension():f=>f
@@ -33,7 +34,6 @@ function boss(){
 						<Route path="/login" component={Login}></Route>
 						<Route path="/register" component={Register}></Route>
 						<Route  component={Dashboard}></Route>
-
 					</Switch>
 				</div>
 			</BrowserRouter>
