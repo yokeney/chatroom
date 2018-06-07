@@ -26,7 +26,7 @@ function User(){
 
        const user=this.props.user;
        const {pathname}=this.props.location;
-       console.log(this.props);
+       console.log(pathname);
        const navList=[
            {
                path:'/boss',
@@ -61,7 +61,7 @@ function User(){
        ]
      return (
        <div>
-           <NavBar mode="dard" className="fixd-header">{navList.find(v=>v.path=pathname).title}</NavBar>
+           <NavBar mode="dard" className="fixd-header">{navList.find(v=>v.path==pathname).title}</NavBar>
            <div style={{marginTop:45}}>
                 <Switch>
                     {
