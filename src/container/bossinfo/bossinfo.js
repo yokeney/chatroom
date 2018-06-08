@@ -15,7 +15,6 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
              title:'',
              company:'',
              money:'',
-             content:''
          }
      }
      onChange(key,val){
