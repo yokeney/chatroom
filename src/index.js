@@ -17,10 +17,6 @@ const store=createStore(combineReducers,compose(
 	applyMiddleware(thunk),
 	window.devToolExtension?window.devToolExtension():f=>f
 ));
-console.log(store.getState());
-function boss(){
-	return <h1>boss</h1>
-}
 //boss genius me msg
 	ReactDom.render(
 		<Provider store={store}>
@@ -30,7 +26,6 @@ function boss(){
 					<Switch>
 						<Route path='/bossinfo' component={Bossinfo}></Route>
 						<Route path='/geniusinfo' component={Geniusinfo}></Route>
-						<Route path="/boss" component={boss}></Route>
 						<Route path="/login" component={Login}></Route>
 						<Route path="/register" component={Register}></Route>
 						<Route  component={Dashboard}></Route>

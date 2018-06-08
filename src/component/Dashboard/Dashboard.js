@@ -2,10 +2,9 @@ import React,{Component} from "react";
 import {connect} from 'react-redux'
 import {Switch,Route} from 'react-router-dom'
 import {NavBar} from 'antd-mobile'
+import Boss from '../boss/boss'
 import NavLinkBar from '../navlink/navlink'
-function Boss(){
-    return <h1>Boss</h1>
-}
+
 function Genius(){
     return <h1>Genius</h1>
 }

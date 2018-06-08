@@ -14,7 +14,8 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
          this.state={
              title:'',
              company:'',
-             money:''
+             money:'',
+             content:''
          }
      }
      onChange(key,val){

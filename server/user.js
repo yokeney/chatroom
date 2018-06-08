@@ -5,11 +5,13 @@ const utils=require('utility')
 const _filter={'pwd':0,'__v':0}
 const User=model.getModel('user')
 Router.get('/list',(req,res)=>{
+	const {type}=req.query;
 	// User.remove({},(e,d)=>{
 	// 	console.log(e);
 	// })
-	User.find({},(err,doc)=>{
-		return res.json(doc)
+	User.find({type},(err,doc)=>{
+		console.log(doc);
+		return res.json({code:0,data:doc})
 	})
 })
 Router.post('/update',(req,res)=>{
@@ -25,7 +27,6 @@ Router.post('/update',(req,res)=>{
 		},body)
 		return res.json({code:0,data})
 	})
-
 })
 Router.post('/login',function(req,res){
 	const {user,pwd}=req.body;
