@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import axios from 'axios'
 import {Card,WingBlank,WhiteSpace}  from 'antd-mobile'
 import {connect} from 'react-redux'
+import UserCard from '../usercard/usercard'
 import {getUserList} from '../../redux/chatuser.redux'
 @connect(
     state=>state.chatuser,
@@ -14,27 +15,10 @@ import {getUserList} from '../../redux/chatuser.redux'
  		this.state={data:[]}
   		}
 	 componentDidMount(){
-		this.props.getUserList('genius');
+		this.props.getUserList('boss');
 	 }
  	render(){
 		console.log(this.state.data);
-		const Header=Card.Header;
-		const Body=Card.Body;
- 		return (
- 				<WingBlank>
-				<WhiteSpace></WhiteSpace>
-					{
-						this.props.userList.map(v=>(
-							v.avatar?<Card key={v._id}>
-								<Header  title={v.user} thumb={require(`../img/${v.avatar}.png`)} extra={v.title}>
-								</Header>
-								<Body>
-
-								</Body>
-							</Card>:null
-						))
-					}
-				</WingBlank>
- 		)
+ 		return <UserCard userList={this.props.userList}></UserCard>
  	}
  }
