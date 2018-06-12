@@ -44,7 +44,7 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
                     <InputItem onChange={v=>this.onChange('money',v)}>
                         职位薪资
                     </InputItem>
-                    <TextareaItem rows={3} autoHeight title="职位要求" onChange={v=>this.onChange('content',v)}></TextareaItem>
+                    <TextareaItem rows={3} autoHeight title="职位要求" onChange={v=>this.onChange('staticContext',v)}></TextareaItem>
                     <Button type="primary" onClick={()=>{
                         this.props.update(this.state)
                     }}>保存</Button>

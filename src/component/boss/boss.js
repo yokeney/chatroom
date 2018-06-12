@@ -1,6 +1,6 @@
 import React,{Component} from "react";
-import axios from 'axios'
-import {Card,WingBlank,WhiteSpace}  from 'antd-mobile'
+// import axios from 'axios'
+// import {Card,WingBlank,WhiteSpace}  from 'antd-mobile'
 import {connect} from 'react-redux'
 import UserCard from '../usercard/usercard'
 import {getUserList} from '../../redux/chatuser.redux'

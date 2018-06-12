@@ -13,7 +13,7 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
          super();
          this.state={
              title:'',
-			 desc:''
+			 staticContext:''
          }
      }
      onChange(key,val){
@@ -24,7 +24,6 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
  	render(){
         const path=this.props.location.pathname;
         const redirect=this.props.redirectTo;
-        console.log(path,redirect);
  		return (
  				<div>
                      {redirect&&redirect!==path?<Redirect to={this.props.redirectTo} />:null}
@@ -37,7 +36,7 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector'
                     <InputItem onChange={v=>this.onChange('title',v)}>
                         求职职位
                     </InputItem>
-                    <TextareaItem rows={3} autoHeight title="个人见解" onChange={v=>this.onChange('desc',v)}></TextareaItem>
+                    <TextareaItem rows={3} autoHeight title="个人见解" onChange={v=>this.onChange('staticContext',v)}></TextareaItem>
                     <Button type="primary" onClick={()=>{
                         this.props.update(this.state)
                     }}>保存</Button>

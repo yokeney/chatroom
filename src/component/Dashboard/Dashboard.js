@@ -5,24 +5,18 @@ import {NavBar} from 'antd-mobile'
 import Boss from '../boss/boss'
 import NavLinkBar from '../navlink/navlink'
 import Genius from '../Genius/Genius'
+import User from '../user/user'
 function Msg(){
     return <h1>Msg</h1>
-}
-function User(){
-    return <h1>User</h1>
 }
 @connect(
     state=>state
 )
  export default class  extends Component{
-     constructor(){
-         super();
-     }
    render(){
 
        const user=this.props.user;
        const {pathname}=this.props.location;
-       console.log(pathname);
        const navList=[
            {
                path:'/boss',
@@ -30,7 +24,7 @@ function User(){
                icon:'boss',
                title:'牛人列表',
                component:Boss,
-               hide:user.type=='genius'
+               hide:user.type==='genius'
            },
            {
                path:'/genius',
@@ -38,7 +32,7 @@ function User(){
                icon:'job',
                title:'BOSS列表',
                component:Genius,
-               hide:user.type=='boss'
+               hide:user.type==='boss'
            },
            {
                path:'/msg',
@@ -57,7 +51,7 @@ function User(){
        ]
      return (
        <div>
-           <NavBar mode="dard" className="fixd-header">{navList.find(v=>v.path==pathname).title}</NavBar>
+           <NavBar mode="dard" className="fixd-header">{navList.find(v=>v.path===pathname).title}</NavBar>
            <div style={{marginTop:45}}>
                 <Switch>
                     {

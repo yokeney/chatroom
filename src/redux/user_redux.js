@@ -1,8 +1,6 @@
 import {getRedirectPath} from '../util'
 import axios from 'axios'//axios不用加
-const REGISTER_SUCCESS="REGISTER_SUCCESS";
 const AUTH_SUCCESS="AUTH_SUCCESS"
-const LOGIN_SUCCESS='LOGIN_SUCCESS';
 const LOGIN_DATA="LOGIN_DATA";
 const ERROR="ERROR";
 const initstate={
@@ -30,9 +28,6 @@ function Authsuccess(obj){
 }
 function errorMsg(msg){
 	return {msg,type:ERROR}
-}
-function loginSuccess(data){
-	return  {type: LOGIN_SUCCESS,payload:data}
 }
 export function update(data){
 	return dispatch=>{
@@ -66,9 +61,7 @@ export function login({user,pwd}){
 		})
 }
 }
-function registerSuccess(data){
-	return {type:REGISTER_SUCCESS,payload:data}
-}
+
 export	function register({user,pwd,repeatpwd,type}){
 	if (!user||!pwd||!type) {
 		return errorMsg("用户密码错误")

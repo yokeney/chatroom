@@ -11,13 +11,11 @@ import {withRouter} from 'react-router-dom'
  export default class AuthRoute extends Component{
 	 componentDidMount(){
 		 const publicList=['/login','/register']
-         console.log(this.props);
         const pathname=this.props.location.pathname;
          if (publicList.indexOf(pathname)>-1) {
              return null
          }
 		 axios.get('user/info').then(res=>{
-             console.log(res);
 			 if (res.status===200) {
                  if (res.data.code===0) {
                      //有登录信息的
