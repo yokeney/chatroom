@@ -42,7 +42,7 @@ function Msg(){
                component:Msg
            },
            {
-               path:'/me',
+               path:'/user',
                text:'我',
                icon:'user',
                title:'个人中心',
@@ -52,7 +52,7 @@ function Msg(){
      return (
        <div>
            <NavBar mode="dard" className="fixd-header">{navList.find(v=>v.path===pathname).title}</NavBar>
-           <div style={{marginTop:45}}>
+           <div >
                 <Switch>
                     {
                         navList.map(v=>(
