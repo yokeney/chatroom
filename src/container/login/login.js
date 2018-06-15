@@ -4,6 +4,39 @@ import {login} from '../../redux/user_redux'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
+//9.6函数式编程
+// function hello(){
+//     console.log("hrello");
+// }
+// hello();
+// function wrapperHello(fn){
+//     return function(){
+//         console.log(1);
+//         fn();
+//         console.log(2);
+//     }
+// }
+// Hello();
+    //属性代理
+//     class Hello extends React.Component{
+//         render(){
+//             return (<h2>hellaaaaao</h2>)
+//         }
+//     }
+//     function wrapperHello(Comp){
+//         class wrapperComp extends React.Component{
+//             render(){
+//                 return (
+//                     <div>
+//                     <p>高阶组件</p>
+//                     <Comp {...this.props}></Comp>
+//                     </div>
+//                 )
+//             }
+//         }
+//         return wrapperComp;
+//     }
+// Hello=wrapperHello(Hello);
 @connect(
     state=>state.user,
     {login}
@@ -37,7 +70,6 @@ import {InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
 				<Logo></Logo>
                     {this.props.redirectTo?<Redirect to={this.props.redirectTo} />:null}
 				<WingBlank>
-
                     {this.props.msg?<p className="error-msg">{this.props.msg}</p>:null}
 					<InputItem onChange={v=>this.handChange('user',v)}>用户</InputItem>
 					<WhiteSpace/>

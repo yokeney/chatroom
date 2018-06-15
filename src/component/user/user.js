@@ -28,7 +28,7 @@ import {Redirect} from 'react-router-dom'
     //    window.location.href=window.location.href;
    }
    render(){
-       console.log(this.props);
+     console.log(this.props);
      const Item=List.Item;
      const Brief=Item.Brief;
      return this.props.user?(
