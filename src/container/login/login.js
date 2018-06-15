@@ -4,6 +4,7 @@ import {login} from '../../redux/user_redux'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
+import imoocForm from '../../component/imooc_Form/imooc.form'
 //9.6函数式编程
 // function hello(){
 //     console.log("hrello");
